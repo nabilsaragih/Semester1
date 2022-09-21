@@ -36,23 +36,44 @@ print("|" + "6. ".center(5, " ") + "Modulo".ljust(10) + "|" + "[%]".center(7) + 
 print("=" * 25 + "\n")
 
 
-# Inputan
-nilaiPertama = int(input("Masukkan nilai: "))
-operasi = str(input("Masukkan operasi (no. urut): "))
-nilaiKedua = int(input("Masukkan nilai: "))
+nilaiPertama = None
+Operasi = None
+nilaiKedua = None
+
+while True:
+    # Inputan
+    nilaiPertama = int(input("Masukkan nilai: "))
+    operasi = str(input("Masukkan operasi (no. urut): "))
+    nilaiKedua = int(input("Masukkan nilai: "))
+
+    # Coba nilai
+    try:
+        int(nilaiPertama)
+        int(nilaiKedua)
+    except ValueError:
+        print("Nilai yang anda masukkan bukan angka")
+        operasi = None
 
 
-# Pemilihan operasi
-if operasi == "1":
-    print("Hasil adalah: " + tambah(nilaiPertama, nilaiKedua))
-elif operasi == "2":
-    print("Hasil adalah: " + kurang(nilaiPertama, nilaiKedua))
-elif operasi == "3":
-    print("Hasil adalah: " + kali(nilaiPertama, nilaiKedua))
-elif operasi == "4":
-    print("Hasil adalah: " + bagi(nilaiPertama, nilaiKedua))
-elif operasi == "5":
-    print("Hasil adalah: " + pangkat(nilaiPertama, nilaiKedua))
-elif operasi == "6":
-    print("Hasil adalah: " + modulo(nilaiPertama, nilaiKedua))
 
+    # Pemilihan operasi
+    if operasi != None:
+        if operasi == "1":
+            print("Hasil adalah: " + tambah(nilaiPertama, nilaiKedua))
+        elif operasi == "2":
+            print("Hasil adalah: " + kurang(nilaiPertama, nilaiKedua))
+        elif operasi == "3":
+            print("Hasil adalah: " + kali(nilaiPertama, nilaiKedua))
+        elif operasi == "4":
+            print("Hasil adalah: " + bagi(nilaiPertama, nilaiKedua))
+        elif operasi == "5":
+            print("Hasil adalah: " + pangkat(nilaiPertama, nilaiKedua))
+        elif operasi == "6":
+            print("Hasil adalah: " + modulo(nilaiPertama, nilaiKedua))
+        else:
+            print("Operasi tidak valid")
+
+
+    q = input("Keluar? [Ya/Tidak]: ")
+    if q == "Ya" or q == "ya":
+        break
