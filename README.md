@@ -2,5 +2,8 @@
 Penyelesaian studi kasus.
 
 ## Modul 1
-- Luas Lingkaran
+- Luas lingkaran
 - Bilangan genap dan ganjil
+
+## Modul 2
+- Pengubah mata uang
