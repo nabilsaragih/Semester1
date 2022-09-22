@@ -1,5 +1,5 @@
 # Studi Kasus Modul Praktikum
-Penyelesaian studi kasus.
+Penyelesaian studi kasus modul praktikum mata kuliah algoritma dan pemrograman dasar angkatan '22.
 
 ## Modul 1
 - Luas lingkaran
