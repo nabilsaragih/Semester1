@@ -23,27 +23,27 @@ def modulo(nilaiPertama, nilaiKedua):
     return str(nilaiPertama % nilaiKedua)
 
 
-# UI
-print("=" * 25)
-print("|" + "Operasi".center(23, " ") + "|")
-print("=" * 25)
-print("|" + "1. ".center(5, " ") + "Tambah".ljust(10) + "|" + "[+]".center(7) + "|")
-print("|" + "2. ".center(5, " ") + "Kurang".ljust(10) + "|" + "[-]".center(7) + "|")
-print("|" + "3. ".center(5, " ") + "Kali".ljust(10) + "|" + "[*]".center(7) + "|")
-print("|" + "4. ".center(5, " ") + "Bagi".ljust(10) + "|" + "[/]".center(7) + "|")
-print("|" + "5. ".center(5, " ") + "Pangkat".ljust(10) + "|" + "[^]".center(7) + "|")
-print("|" + "6. ".center(5, " ") + "Modulo".ljust(10) + "|" + "[%]".center(7) + "|")
-print("=" * 25 + "\n")
 
 
 nilaiPertama = None
-Operasi = None
+operasi = None
 nilaiKedua = None
 
 while True:
+    # UI
+    print("=" * 25)
+    print("|" + "Operasi".center(23, " ") + "|")
+    print("=" * 25)
+    print("|" + "1. ".center(5, " ") + "Tambah".ljust(10) + "|" + "[+]".center(7) + "|")
+    print("|" + "2. ".center(5, " ") + "Kurang".ljust(10) + "|" + "[-]".center(7) + "|")
+    print("|" + "3. ".center(5, " ") + "Kali".ljust(10) + "|" + "[*]".center(7) + "|")
+    print("|" + "4. ".center(5, " ") + "Bagi".ljust(10) + "|" + "[/]".center(7) + "|")
+    print("|" + "5. ".center(5, " ") + "Pangkat".ljust(10) + "|" + "[^]".center(7) + "|")
+    print("|" + "6. ".center(5, " ") + "Modulo".ljust(10) + "|" + "[%]".center(7) + "|")
+    print("=" * 25 + "\n")
     # Inputan
     nilaiPertama = int(input("Masukkan nilai: "))
-    operasi = str(input("Masukkan operasi (no. urut): "))
+    operasi = str(input("Masukkan operasi (1, 2, 3, 4, 5, 6): "))
     nilaiKedua = int(input("Masukkan nilai: "))
 
     # Coba nilai
