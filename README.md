@@ -6,7 +6,7 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 - Bilangan genap dan ganjil
 
 ## Modul 4 - Struktur Pemrograman Python
-- Pengubah mata uang
+- Pengubah mata uang \[Advanced\]
 
 ## Modul 5 - Percabangan
 - Penghitung harga diskon
