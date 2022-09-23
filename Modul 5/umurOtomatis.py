@@ -1,10 +1,7 @@
-'''
-Sebuah puskesmas meminta kalian untuk membuatkan program dimana mereka dapat
-memasukan umur dari para warga dan program pun akan otomatis memasukan mereka
-kedalam golongan muda, remaja, dewasa, dan lansia.
-'''
-
+# list kosong untuk menyimpan data
 listUmur = []
+
+# looping untuk memasukkan data berulang kali
 while True:
     umur = int(input("Masukkan umur: "))
     listUmur.append(umur)
@@ -13,11 +10,13 @@ while True:
     if lagi == "Tidak" or lagi == "tidak":
         break
 
+# list untuk menyimpan hasil inputan
 muda = []
 remaja = []
 dewasa = []
 lansia = []
 
+# memasukkan nilai inputan ke list
 for i in listUmur:
     if i >= 0 and i <= 12:
         muda.append(i)
@@ -28,6 +27,7 @@ for i in listUmur:
     else:
         lansia.append(i)
 
+# mencetak nilai yang sudah disortir
 print(f"Golongan muda: {muda}")
 print(f"Golongan remaja: {remaja}")
 print(f"Golongan dewasa: {dewasa}")
