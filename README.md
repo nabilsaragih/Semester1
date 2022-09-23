@@ -1,5 +1,5 @@
 # Studi Kasus Modul Praktikum
-Penyelesaian studi kasus modul praktikum mata kuliah algoritma dan pemrograman dasar angkatan '22.
+Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman Dasar Informatika UNMUL angkatan '22.
 
 ## Modul 1 - Algoritma
 - Luas lingkaran
