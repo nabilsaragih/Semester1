@@ -7,6 +7,8 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 
 ## Modul 4 - Struktur Pemrograman Python
 - Pengubah mata uang \[Advanced\]
+- Pengubah mata uang \[Basic\]
 
 ## Modul 5 - Percabangan
 - Penghitung harga diskon
+- Pengelompokan umur otomatis
