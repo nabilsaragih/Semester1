@@ -23,5 +23,5 @@ for nilai in range(1, panjangNilai + 1):
 
 # Output
 print(f"Bilangan prima: {bilanganPrima}")
-print(f"Jumlah bilangan prima dari 1 sampai {panjangNilai} adalah {len(bilanganPrima)}")
-
+print(f"Banyak bilangan prima dari 1 sampai {panjangNilai} adalah {len(bilanganPrima)}")
+print(f"Jumlah bilangan prima dari 1 sampai {panjangNilai} adalah {sum(bilanganPrima)}")
