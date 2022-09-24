@@ -3,7 +3,9 @@ bilanganPrima = []
 panjangNilai = int(input("Masukkan panjang nilai: "))
 
 # Looping dari 2 sampai panjang nilai
-for nilai in range(2, panjangNilai + 1):
+for nilai in range(1, panjangNilai + 1):
+    if nilai == 1:
+        continue
     # Looping untuk mencari faktor
     for faktor in range(2, nilai):
         # Jika nilai sama dengan faktor lanjut

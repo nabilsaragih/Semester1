@@ -21,3 +21,6 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 ## Modul 5 - Percabangan
 - [Penghitung harga diskon](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%205/violetDiscount.py "Penghitung harga diskon")
 - [Pengelompokan umur otomatis](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%205/umurOtomatis.py "Pengelompokan umur otomatis")
+
+## Modul 5 - Percabangan
+- [Jumlah bilangan prima](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%206/primeNumber.py "Jumlah bilangan prima")
