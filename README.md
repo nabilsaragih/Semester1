@@ -10,7 +10,7 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 1. Raptor Flowchart
     - [Nilai terbesar](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%202/nilaiTerbesar.rap "Nilai terbesar")
     - [Volume kerucut](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%202/volumeKerucut.rap "Volume kerucut")
-1. Python Code
+2. Python Code
     - [Nilai terbesar](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%202/nilaiTerbesar.py "Nilai terbesar")
     - [Volume kerucut](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%202/volumeKerucut.py "Volume kerucut")
 
