@@ -25,3 +25,6 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 ## Modul 6 - Perulangan
 - [Jumlah bilangan prima](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%206/primeNumber.py "Jumlah bilangan prima")
 - [Jumlah input positif](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%206/inputPositif.py "Jumlah input positif")
+
+## Modul 7 - List dan Tuple
+- [Anggota AI](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%207/anggotaAI.py "Anggota AI")
