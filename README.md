@@ -28,3 +28,6 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 
 ## Modul 7 - List dan Tuple
 - [Anggota AI](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%207/anggotaAI.py "Anggota AI")
+
+## Modul 8 - Dictionary
+- [CRUD](https://github.com/nabilsaragih/studiKasus/blob/main/Modul%208/CRUD.py "CRUD")
