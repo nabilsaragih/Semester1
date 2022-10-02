@@ -1,8 +1,3 @@
-# Post-test
-Penyelesaian post-test.
-
-## Post-test 1
-- Membuat sebuah algoritma deskriptif dan pseudocode untuk menentukan [Tahun Kabisat](https://github.com/nabilsaragih/Semester1/blob/main/Post-test/posttest1.py "Tahun Kabisat").
 
 # Studi Kasus Modul Praktikum
 Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman Dasar Informatika UNMUL angkatan '22.
@@ -37,3 +32,13 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 
 ## Modul 8 - Dictionary
 - [CRUD](https://github.com/nabilsaragih/Semester1/blob/main/StudiKasus/Modul%208/CRUD.py "CRUD")
+
+
+# Post-test
+Penyelesaian post-test.
+
+## Post-test 1
+- Membuat sebuah algoritma deskriptif dan pseudocode untuk menentukan [Tahun Kabisat](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/1 "Tahun Kabisat").
+
+## Post-test 2
+- Membuat sebuah flowchart untuk menentukan [Kategori Umur](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/2 "Kategori Umur").
