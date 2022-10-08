@@ -42,3 +42,7 @@ Penyelesaian post-test.
 
 ## Post-test 2
 - Membuat sebuah flowchart untuk menentukan [Kategori Umur](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/2 "Kategori Umur").
+
+## Post-test 3
+- Membuat sebuah program untuk [Mengubah Suhu](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/suhuConverter.py "Mengubah Suhu").
+- Membuat sebuah program untuk [Mengisi Biodata](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/biodata.py "Mengisi Biodata").
