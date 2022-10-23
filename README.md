@@ -49,3 +49,6 @@ Penyelesaian post-test.
 
 ## Post-test 4
 - Membuat sebuah program untuk mengubah [Satuan Panjang](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/4/konversiPanjang.py "Satuan Panjang") berdasarkan input user.
+
+## Post-test 5
+- Menambah [Fitur Login](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/5/konversiPanjangBuff.py "Fitur Login") pada program Post-test 4.
