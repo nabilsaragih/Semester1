@@ -163,15 +163,22 @@ while True:
                             case 2:
                                 clear()
                                 filmTitle = input("Masukkan judul film yang ingin anda cari: ")
-                                for film in listFilm:
-                                    if film["Judul"] == filmTitle:
-                                        print("Judul yang anda cari ditemukan.")
-                                        print(f"Judul Film: {film['Judul']}")
-                                        print(f"Tahun Rilis: {film['TahunRilis']}")
-                                        print(f"Genre Film: {film['Genre']}")
-                                        print(f"Durasi Film: {film['Durasi']}")
-                                    else:
-                                        print("Film yang anda cari tidak ditemukan")
+                                if len(listFilm) == 0:
+                                    print("Data film masih kosong, tunggu admin mengisi data.")
+                                else:
+                                    for film in listFilm:
+                                        if film["Judul"] == filmTitle:
+                                            print("Judul yang anda cari ditemukan.\n")
+                                            print(f"Judul Film: {film['Judul']}")
+                                            print(f"Tahun Rilis: {film['TahunRilis']}")
+                                            print(f"Genre Film: {film['Genre']}")
+                                            print(f"Durasi Film: {film['Durasi']}\n")
+                                        else:
+                                            print("Film yang anda cari tidak ditemukan")
+
+                                lanjut = input("Lanjut? [Y/N]... ")
+                                if lanjut == "N" or lanjut == "n":
+                                    break
 
                             case 3:
                                 break
