@@ -20,7 +20,7 @@ pilihan3 = tuple(i for i in range(1, 4))
 while True:
     clear()
     print("-" * 26)
-    print("|", "Menu".center(22), "|")
+    print("|", "Welcome to CRUD21".center(22), "|")
     print("-" * 26)
     print("|", "[1]", "Login".ljust(18),  "|")
     print("|", "[2]", "Register".ljust(18),  "|")
@@ -67,7 +67,7 @@ while True:
                     clear()
                     if listAkun[2][indexAkun] == "Admin" or listAkun[2][indexAkun] == "admin":
                         print("-" * 26)
-                        print("|", "Menu Admin".center(22), "|")
+                        print("|", "CRUD21 Admin Menu".center(22), "|")
                         print("-" * 26)
                         print("|", "[1]", "Tambah Film".ljust(18),  "|")
                         print("|", "[2]", "Lihat Film".ljust(18),  "|")
@@ -135,7 +135,7 @@ while True:
 
                     elif listAkun[2][indexAkun] == "User" or listAkun[2][indexAkun] == "user":
                         print("-" * 26)
-                        print("|", "Menu User".center(22), "|")
+                        print("|", "CRUD21 User Menu".center(22), "|")
                         print("-" * 26)
                         print("|", "[1]", "Lihat List Film".ljust(18),  "|")
                         print("|", "[2]", "Cari Film".ljust(18),  "|")
