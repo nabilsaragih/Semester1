@@ -13,6 +13,9 @@ listAkun = [[], [], []]
 indexAkun = 0
 listFilm = []
 indexFilm = 0
+pilihan1 = tuple(i for i in range(1, 4))
+pilihan2 = tuple(i for i in range(1, 6))
+pilihan3 = tuple(i for i in range(1, 4))
 
 while True:
     clear()
@@ -24,14 +27,23 @@ while True:
     print("|", "[3]", "Keluar".ljust(18),  "|")
     print("-" * 26)
 
-    pilihan = int(input("Masukkan pilihan anda: "))
+    try:
+        pilihan = int(input("Masukkan pilihan anda: "))
+    except ValueError:
+        print("Nilai yang anda masukkan haruslah angka.")
+
+    if pilihan not in pilihan1:
+        print("Pilihan anda tidak ada di menu.")
+        delay(1)
+        continue
+
     if pilihan == 1:
         if len(listAkun[0]) == 0:
             clear()
             print("Tidak ada akun. Anda harus membuat akun terlebih dahulu")
             userReg = input("Masukkan username yang anda inginkan... ")
             passReg = input("Masukkan password yang anda inginkan... ")
-            accLevel = input("Register sebagai? [Admin / User]... ")
+            accLevel = input("Register sebagai? [Admin/User]... ")
 
             listAkun[0].append(userReg)
             listAkun[1].append(passReg)
@@ -64,7 +76,16 @@ while True:
                         print("|", "[5]", "Logout".ljust(18),  "|")
                         print("-" * 26)
 
-                        pilihan = int(input("Masukkan pilihan anda: "))
+                        try:
+                            pilihan = int(input("Masukkan pilihan anda: "))
+                        except ValueError:
+                            print("Nilai yang anda masukkan haruslah angka.")
+
+                        if pilihan not in pilihan2:
+                            print("Pilihan anda tidak ada di menu.")
+                            delay(1)
+                            continue
+
                         match pilihan:
                             case 1:
                                 clear()
@@ -111,7 +132,16 @@ while True:
                         print("|", "[3]", "Logout".ljust(18),  "|")
                         print("-" * 26)
 
-                        pilihan = int(input("Masukkan pilihan anda: "))
+                        try:
+                            pilihan = int(input("Masukkan pilihan anda: "))
+                        except ValueError:
+                            print("Nilai yang anda masukkan haruslah angka.")
+
+                        if pilihan not in pilihan3:
+                            print("Pilihan anda tidak ada di menu.")
+                            delay(1)
+                            continue
+
                         match pilihan:
                             case 1:
                                 clear()
