@@ -52,3 +52,6 @@ Penyelesaian post-test.
 
 ## Post-test 5
 - Menambah [Fitur Login](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/5/konversiPanjangBuff.py "Fitur Login") pada program Post-test 4.
+
+## Post-test 6
+- Membuat sebuah program [Pendataan Film](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/6/crud21.py "Pendataan Film").
