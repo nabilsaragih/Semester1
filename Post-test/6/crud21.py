@@ -97,7 +97,17 @@ while True:
 
                             case 2:
                                 clear()
-                                print(listFilm)
+                                if len(listFilm) == 0:
+                                    print("Film kosong, silakan input data film terlebih dahulu.")
+                                else:
+                                    for i in range(1, len(listFilm) + 1):
+                                        print(f"{i}. Judul: {listFilm[indexFilm]['Judul']}\n   Tahun Rilis: {listFilm[indexFilm]['TahunRilis']}\n   Genre: {listFilm[indexFilm]['Genre']}\n   Durasi: {listFilm[indexFilm]['Durasi']}\n")
+                                        indexFilm += 1
+                                    indexFilm = 0
+
+                                lanjut = input("Lanjut? [Y/N]... ")
+                                if lanjut == "N" or lanjut == "n":
+                                    break
 
                             case 3:
                                 clear()
@@ -173,11 +183,12 @@ while True:
     elif pilihan == 2:
         userReg = input("Masukkan username yang anda inginkan... ")
         passReg = input("Masukkan password yang anda inginkan... ")
-        accLevel = input("Register sebagai? [Admin / User]... ")
+        accLevel = input("Register sebagai? [Admin/User]... ")
 
         listAkun[0].append(userReg)
         listAkun[1].append(passReg)
         listAkun[2].append(accLevel)
 
     elif pilihan == 3:
+        clear()
         break
