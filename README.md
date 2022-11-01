@@ -6,7 +6,7 @@
 - Bahasa Pemrograman: Python
 
 # Studi Kasus Modul Praktikum
-Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman Dasar Informatika UNMUL angkatan '22.
+Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman Dasar Informatika Universitas Mulawarman angkatan '22.
 
 ## Modul 1 - Algoritma
 - [Luas lingkaran](https://github.com/nabilsaragih/Semester1/blob/main/StudiKasus/Modul%201/luasLingkaran.py "Luas lingkaran")
