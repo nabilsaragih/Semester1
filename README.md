@@ -1,3 +1,9 @@
+# Tentang
+- Mata Kuliah: Algoritma dan Pemrograman Dasar
+- Kelas: Informatika A2 2022
+- Dosen Pembimbing: Muhammad Bambang Firdaus, S.Kom., M.Kom. / Awang Harsa Kridalaksana, S.Kom., M.Kom.
+- Asisten Laboratorium: Muhammad Hadiseptian Nursukamto | Ahmad Dhiya Ulhaqi
+- Bahasa Pemrograman: Python
 
 # Studi Kasus Modul Praktikum
 Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman Dasar Informatika UNMUL angkatan '22.
@@ -38,20 +44,51 @@ Penyelesaian studi kasus modul praktikum mata kuliah Algoritma dan Pemrograman D
 Penyelesaian post-test.
 
 ## Post-test 1
-- Membuat sebuah algoritma deskriptif dan pseudocode untuk menentukan [Tahun Kabisat](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/1 "Tahun Kabisat").
+Tanggal pelaksanaan post-test #1: 24 - 28 September 2022. Membuat sebuah algoritma deskriptif dan pseudocode untuk menentukan [Tahun Kabisat](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/1 "Tahun Kabisat").
 
 ## Post-test 2
-- Membuat sebuah flowchart untuk menentukan [Kategori Umur](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/2 "Kategori Umur").
+Tanggal pelaksanaan post-test #2: 1 - 5 Oktober 2022. Membuat sebuah flowchart untuk menentukan [Kategori Umur](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/2 "Kategori Umur") dengan menggunakan aplikasi draw.io, Raptor, maupun Flowgorithm.
 
 ## Post-test 3
-- Membuat sebuah program untuk [Mengubah Suhu](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/suhuConverter.py "Mengubah Suhu").
-- Membuat sebuah program untuk [Mengisi Biodata](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/biodata.py "Mengisi Biodata").
+Tanggal pelaksanaan post-test #3: 8 - 12 Oktober 2022. Membuat sebuah program untuk [Konversi Suhu](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/suhuConverter.py "Konversi Suhu") dari Celcius ke Reamur, Fahrenheit, dan Kelvin. Juga membuat sebuah program untuk [Biodata Sederhana](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/3/biodata.py "Biodata Sederhana") dengan ketentuan:
+- Variabel input minimal 5.
+- Wajib ada tipe data string, integer, dan float.
+- Output dibuat sekreatif mungkin.
+Poin + dengan syarat:
+- Diberi tampilan menu.
+- Menggunakan list atau dictionary.
 
 ## Post-test 4
-- Membuat sebuah program untuk mengubah [Satuan Panjang](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/4/konversiPanjang.py "Satuan Panjang") berdasarkan input user.
+Tanggal pelaksanaan post-test #4: 15 - 19 Oktober 2022. Membuat sebuah program untuk mengubah [Satuan Panjang](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/4/konversiPanjang.py "Satuan Panjang") berdasarkan input user dengan ketentuan:
+- Memiliki satuan panjang Km, m, cm, dan mm.
+Poin + dengan syarat:
+- Menambahkan satuan panjang selain dari yang ada pada ketentuan.
+- Program akan berhenti ketika user memilih menu keluar.
 
 ## Post-test 5
-- Menambah [Fitur Login](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/5/konversiPanjangBuff.py "Fitur Login") pada program Post-test 4.
+Tanggal pelaksanaan post-test #5: 22 - 26 Oktober 2022. Menambah [Fitur Login](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/5/konversiPanjangBuff.py "Fitur Login") pada program Post-test 4 dimana program akan otomatis terhenti apabila user salah memasukkan username atau password sebanyak 3 kali.
 
 ## Post-test 6
-- Membuat sebuah program [Pendataan Film](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/6/crud21.py "Pendataan Film").
+Tanggal pelaksanaan post-test #6: 29 Oktober - 2 November 2022. Membuat sebuah program [Pendataan Film](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/6/crud21.py "Pendataan Film"). Dengan ketentuan utama:
+- User dapat melakukan login serta CRUD di dalam program.
+Poin + dengan syarat:
+- Multiuser (admin dan pengguna biasa).
+- Error Handling.
+- Dapat melakukan register.
+- Menggunakan nested list.
+
+# Proyek Akhir Praktikum Algoritma dan Pemrograman Dasar
+#### Tema:
+- Bebas (Tidak boleh sama, dilis di google spreadsheet).
+- Harus ada fungsi yang jelas bagi kehidupan sehari-hari.
+#### Kriteria Proyek Akhir:
+- Wajib mencakup modul 1-9.
+- Setiap kelompok beranggotakan 3-4 orang (Akan disediakan di google spreadsheet).
+- Wajib konsul dengan aslab pembimbing.
+#### Kriteria Program:
+- Wajib menggunakan CRUD (Create, Read, Update, Delete).
+- Wajib mencakup modul 4-9 (selebihnya nilai +).
+#### Poin + dengan syarat:
+- Multiuser.
+- Materi diluar modul.
+- Tampilan menarik.
