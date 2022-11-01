@@ -54,6 +54,7 @@ Tanggal pelaksanaan post-test #3: 8 - 12 Oktober 2022. Membuat sebuah program un
 - Variabel input minimal 5.
 - Wajib ada tipe data string, integer, dan float.
 - Output dibuat sekreatif mungkin.
+
 Poin + dengan syarat:
 - Diberi tampilan menu.
 - Menggunakan list atau dictionary.
@@ -61,6 +62,7 @@ Poin + dengan syarat:
 ## Post-test 4
 Tanggal pelaksanaan post-test #4: 15 - 19 Oktober 2022. Membuat sebuah program untuk mengubah [Satuan Panjang](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/4/konversiPanjang.py "Satuan Panjang") berdasarkan input user dengan ketentuan:
 - Memiliki satuan panjang Km, m, cm, dan mm.
+
 Poin + dengan syarat:
 - Menambahkan satuan panjang selain dari yang ada pada ketentuan.
 - Program akan berhenti ketika user memilih menu keluar.
@@ -71,6 +73,7 @@ Tanggal pelaksanaan post-test #5: 22 - 26 Oktober 2022. Menambah [Fitur Login](h
 ## Post-test 6
 Tanggal pelaksanaan post-test #6: 29 Oktober - 2 November 2022. Membuat sebuah program [Pendataan Film](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/6/crud21.py "Pendataan Film"). Dengan ketentuan utama:
 - User dapat melakukan login serta CRUD di dalam program.
+
 Poin + dengan syarat:
 - Multiuser (admin dan pengguna biasa).
 - Error Handling.
