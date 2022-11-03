@@ -95,3 +95,11 @@ Poin + dengan syarat:
 - Multiuser.
 - Materi diluar modul.
 - Tampilan menarik.
+
+## About
+Judul Proyek Akhir: Sistem Manajemen Gudang
+Aslab Pembimbing: Ahmad Dhiya Ulhaqi
+Pengembang:
+- Muhammad Nabil Saragih
+- Muhammad Arianda Saputra
+- Muhammad Rafi Adithama
