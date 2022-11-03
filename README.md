@@ -97,9 +97,9 @@ Poin + dengan syarat:
 - Tampilan menarik.
 
 ## Deskripsi Proyek Akhir
-- Judul Proyek Akhir: Sistem Manajemen Gudang
-- Aslab Pembimbing: Ahmad Dhiya Ulhaqi
-- Pengembang:
+1. Judul Proyek Akhir: Sistem Manajemen Gudang
+2. Aslab Pembimbing: Ahmad Dhiya Ulhaqi
+3. Pengembang:
     - Muhammad Nabil Saragih
     - Muhammad Arianda Saputra
     - Muhammad Rafi Adithama
