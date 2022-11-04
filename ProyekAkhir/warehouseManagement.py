@@ -11,11 +11,6 @@ def delay(seconds):
 accountCsvLine = 0
 lotsChoices = (1, 2, 3)
 
-with open('.\database\\account.csv', 'w', newline='\n') as csvfile:
-    fieldnames = ['username', 'password', 'unique_id']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-
 while True:
     cwd = os.getcwd()
     DBPath = cwd + "\\database"
@@ -28,6 +23,15 @@ while True:
 
     if isFile == False:
         open(".\database\\account.csv", "w")
+
+    for row in open(".\database\\account.csv"):
+        accountCsvLine += 1
+
+    if accountCsvLine <= 2:
+        with open('.\database\\account.csv', 'w', newline='\n') as csvfile:
+            fieldnames = ['username', 'password', 'unique_id']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
 
     clear()
     myTable = PrettyTable(["Welcome to WAGE"])
@@ -53,9 +57,6 @@ while True:
                 reader_file = csv.reader(data)
                 reader_list = list(reader_file)
 
-                for row in open(".\database\\account.csv"):
-                    accountCsvLine += 1
-
                 if accountCsvLine <= 2:
                     print("Anda harus register terlebih dahulu.")
                     delay(1)
@@ -74,6 +75,7 @@ while True:
                     password = input("Masukkan password anda: ")
 
                     print(reader_list)
+                    delay(120)
                     # End here
 
             case 2:
