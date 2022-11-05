@@ -1,6 +1,6 @@
-import csv, os, time, pwinput
+import csv, os, time, pwinput, datetime
 from csv import DictWriter
-from prettytable import PrettyTable
+from prettytable import PrettyTable, from_csv
 
 def clear():
     os.system("cls")
@@ -15,18 +15,27 @@ lotsChoices = (1, 2, 3)
 cwd = os.getcwd()
 DBPath = cwd + "\\database"
 accountDBPath = DBPath + "\\account.csv"
+stockDBPath = DBPath + "\\stock.csv"
 isDir = os.path.isdir(DBPath)
-isFile = os.path.isfile(accountDBPath)
+accIsFile = os.path.isfile(accountDBPath)
+stockIsFile = os.path.isfile(stockDBPath)
 
 if isDir == False:
     os.system("mkdir Database")
 
-if isFile == False:
+if accIsFile == False:
     with open('.\database\\account.csv', 'w', newline='\n') as csvfile:
         fieldnames = ['username', 'password', 'account_level']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
+        csvfile.close()
 
+if stockIsFile == False:
+    with open('.\database\\stock.csv', 'w', newline='\n') as stockcsv:
+        list_header = ['nama_barang', 'jumlah_barang', 'harga_barang', 'tanggal_input']
+        writer = csv.DictWriter(stockcsv, fieldnames=list_header)
+        writer.writeheader()
+        stockcsv.close()
 
 while True:
     clear()
@@ -64,6 +73,7 @@ while True:
                     userLevel = input("Register sebagai? [Admin/User] ")
 
                     with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
+                        fieldnames = ['username', 'password', 'account_level']
                         dictObject = DictWriter(csvfile, fieldnames=fieldnames)
                         dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
                         csvfile.close()
@@ -93,8 +103,26 @@ while True:
                                         match pilihan:
                                             case 1:
                                                 clear()
+                                                nama_barang = input("Masukkan nama barang: ")
+                                                jumlah_barang = input("Masukkan jumlah barang: ")
+                                                harga_barang = input("Masukkan harga barang: ")
+                                                tanggal_input = datetime.datetime.now()
+
+                                                with open('.\Database\\stock.csv', 'a', newline='\n') as stockinput:
+                                                    list_header = ['nama_barang', 'jumlah_barang', 'harga_barang', 'tanggal_input']
+                                                    dictObject = DictWriter(stockinput, fieldnames=list_header)
+                                                    dictObject.writerow({'nama_barang': nama_barang, 'jumlah_barang': jumlah_barang, 'harga_barang': harga_barang, 'tanggal_input': tanggal_input})
+                                                    stockinput.close()
+
+                                                print("Barang berhasil ditambahkan.")
+                                                delay(1)
                                             case 2:
                                                 clear()
+                                                with open('.\Database\\stock.csv') as stockdata:
+                                                    showData = from_csv(stockdata)
+                                                    print(showData)
+
+                                                lanjut = input("Tekan ENTER untuk lanjut. ")
                                             case 3:
                                                 clear()
                                             case 4:
@@ -126,7 +154,6 @@ while True:
                                                 break
                             else:
                                 print("Password anda salah!")
-                    # End here
 
             case 2:
                 clear()
@@ -135,6 +162,7 @@ while True:
                 userLevel = input("Register sebagai? [Admin/User] ")
 
                 with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
+                    fieldnames = ['username', 'password', 'account_level']
                     dictObject = DictWriter(csvfile, fieldnames=fieldnames)
                     dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
                     csvfile.close()
