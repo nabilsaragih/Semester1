@@ -11,6 +11,7 @@ def delay(seconds):
 accountCsvLine = 0
 accountIndex = 0
 indexItem = 0
+stockCsvLine = 0
 lotsChoices = (1, 2, 3)
 listOfStockDict = []
 
@@ -159,6 +160,41 @@ while True:
                                                 lanjut = input("Barang berhasil diubah. Tekan ENTER untuk lanjut. ")
                                             case 4:
                                                 clear()
+                                                stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
+                                                hapus = input("Masukkan nama barang yang ingin dihapus: ")
+
+                                                for row in stock_dict:
+                                                    listOfStockDict.append(row)
+
+                                                for stock in range(len(listOfStockDict)):
+                                                    if hapus.title() == listOfStockDict[stock]["Nama Barang"]:
+                                                        indexItem += stock
+
+                                                for row in open(".\database\\stock.csv"):
+                                                    stockCsvLine += 1
+
+                                                if stockCsvLine == 2:
+                                                    with open('.\Database\\stock.csv', 'r+') as deleteStock:
+                                                        lines = deleteStock.readlines()
+                                                        deleteStock.seek(0)
+                                                        deleteStock.truncate()
+                                                        deleteStock.writelines(lines[:-1])
+                                                        deleteStock.close()
+                                                else:
+                                                    del listOfStockDict[indexItem]
+                                                    print("Barang berhasil dihapus.")
+
+                                                    keys = listOfStockDict[0].keys()
+
+                                                    with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
+                                                        dict_writer = csv.DictWriter(replace_csv, keys)
+                                                        dict_writer.writeheader()
+                                                        dict_writer.writerows(listOfStockDict)
+                                                        replace_csv.close()
+
+                                                    indexItem = 0
+                                                    listOfStockDict = []
+                                                    delay(1)
                                             case 5:
                                                 clear()
                                                 accountIndex = 0
