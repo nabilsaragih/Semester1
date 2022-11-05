@@ -10,7 +10,9 @@ def delay(seconds):
 
 accountCsvLine = 0
 accountIndex = 0
+indexItem = 0
 lotsChoices = (1, 2, 3)
+listOfStockDict = []
 
 cwd = os.getcwd()
 DBPath = cwd + "\\database"
@@ -32,7 +34,7 @@ if accIsFile == False:
 
 if stockIsFile == False:
     with open('.\database\\stock.csv', 'w', newline='\n') as stockcsv:
-        list_header = ['nama_barang', 'jumlah_barang', 'harga_barang', 'tanggal_input']
+        list_header = ['Nama Barang', 'Jumlah Barang', 'Harga Barang', 'Tanggal Input']
         writer = csv.DictWriter(stockcsv, fieldnames=list_header)
         writer.writeheader()
         stockcsv.close()
@@ -104,14 +106,14 @@ while True:
                                             case 1:
                                                 clear()
                                                 nama_barang = input("Masukkan nama barang: ")
-                                                jumlah_barang = input("Masukkan jumlah barang: ")
-                                                harga_barang = input("Masukkan harga barang: ")
+                                                jumlah_barang = int(input("Masukkan jumlah barang: "))
+                                                harga_barang = float(input("Masukkan harga barang: "))
                                                 tanggal_input = datetime.datetime.now()
 
                                                 with open('.\Database\\stock.csv', 'a', newline='\n') as stockinput:
-                                                    list_header = ['nama_barang', 'jumlah_barang', 'harga_barang', 'tanggal_input']
+                                                    list_header = ['Nama Barang', 'Jumlah Barang', 'Harga Barang', 'Tanggal Input']
                                                     dictObject = DictWriter(stockinput, fieldnames=list_header)
-                                                    dictObject.writerow({'nama_barang': nama_barang, 'jumlah_barang': jumlah_barang, 'harga_barang': harga_barang, 'tanggal_input': tanggal_input})
+                                                    dictObject.writerow({'Nama Barang': nama_barang.title(), 'Jumlah Barang': jumlah_barang, 'Harga Barang': harga_barang, 'Tanggal Input': tanggal_input})
                                                     stockinput.close()
 
                                                 print("Barang berhasil ditambahkan.")
@@ -120,18 +122,48 @@ while True:
                                                 clear()
                                                 with open('.\Database\\stock.csv') as stockdata:
                                                     showData = from_csv(stockdata)
+                                                    showData.align["Nama Barang"] = "l"
+                                                    showData.align["Jumlah Barang"] = "r"
+                                                    showData.align["Harga Barang"] = "r"
+                                                    showData.align["Tanggal Input"] = "c"
                                                     print(showData)
 
                                                 lanjut = input("Tekan ENTER untuk lanjut. ")
                                             case 3:
                                                 clear()
+                                                stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
+                                                stock_name = input("Masukkan nama barang yang ingin diubah: ")
+
+                                                for row in stock_dict:
+                                                    listOfStockDict.append(row)
+
+                                                for stock in range(len(listOfStockDict)):
+                                                    if stock_name.title() == listOfStockDict[stock]["Nama Barang"]:
+                                                        indexItem += stock
+                                                        print("Barang ditemukan!")
+                                                
+                                                pilih = input("Masukkan key dari item yang ingin diubah: ")
+                                                ubah = input("Ubah menjadi: ")
+                                                listOfStockDict[indexItem][pilih.title()] = ubah
+
+                                                keys = listOfStockDict[0].keys()
+
+                                                with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
+                                                    dict_writer = csv.DictWriter(replace_csv, keys)
+                                                    dict_writer.writeheader()
+                                                    dict_writer.writerows(listOfStockDict)
+                                                    replace_csv.close()
+                                                
+                                                indexItem = 0
+                                                listOfStockDict = []
+                                                lanjut = input("Barang berhasil diubah. Tekan ENTER untuk lanjut. ")
                                             case 4:
                                                 clear()
                                             case 5:
                                                 clear()
                                                 accountIndex = 0
                                                 break
-    
+
                                 elif reader_list[accountIndex][2] == "user":
                                     while True:
                                         clear()
