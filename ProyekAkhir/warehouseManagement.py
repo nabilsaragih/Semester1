@@ -1,4 +1,4 @@
-import csv, os, time, pwinput, random, string
+import csv, os, time, pwinput
 from csv import DictWriter
 from prettytable import PrettyTable
 
@@ -9,30 +9,26 @@ def delay(seconds):
     time.sleep(seconds)
 
 accountCsvLine = 0
+accountIndex = 0
 lotsChoices = (1, 2, 3)
 
+cwd = os.getcwd()
+DBPath = cwd + "\\database"
+accountDBPath = DBPath + "\\account.csv"
+isDir = os.path.isdir(DBPath)
+isFile = os.path.isfile(accountDBPath)
+
+if isDir == False:
+    os.system("mkdir Database")
+
+if isFile == False:
+    with open('.\database\\account.csv', 'w', newline='\n') as csvfile:
+        fieldnames = ['username', 'password', 'account_level']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+
+
 while True:
-    cwd = os.getcwd()
-    DBPath = cwd + "\\database"
-    accountDBPath = DBPath + "\\account.csv"
-    isDir = os.path.isdir(DBPath)
-    isFile = os.path.isfile(accountDBPath)
-
-    if isDir == False:
-        os.system("mkdir Database")
-
-    if isFile == False:
-        open(".\database\\account.csv", "w")
-
-    for row in open(".\database\\account.csv"):
-        accountCsvLine += 1
-
-    if accountCsvLine <= 2:
-        with open('.\database\\account.csv', 'w', newline='\n') as csvfile:
-            fieldnames = ['username', 'password', 'unique_id']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-
     clear()
     myTable = PrettyTable(["Welcome to WAGE"])
     myTable.add_row(["[1] Login"])
@@ -56,37 +52,91 @@ while True:
                 data = open(".\database\\account.csv", "r")
                 reader_file = csv.reader(data)
                 reader_list = list(reader_file)
+                
+                for row in open(".\database\\account.csv"):
+                    accountCsvLine += 1
 
-                if accountCsvLine <= 2:
+                if accountCsvLine == 1:
                     print("Anda harus register terlebih dahulu.")
                     delay(1)
                     userReg = input("Masukkan username... ")
                     passReg = input("Masukkan password... ")
-                    uniqueReg = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(16))
+                    userLevel = input("Register sebagai? [Admin/User] ")
 
                     with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
                         dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-                        dictObject.writerow({'username': userReg, 'password': passReg, 'unique_id': uniqueReg})
+                        dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
                         csvfile.close()
 
                 else:
                     print("Login to WAGE")
                     username = input("Masukkan username anda: ")
-                    password = input("Masukkan password anda: ")
+                    password = pwinput.pwinput("Masukkan password anda: ")
 
-                    print(reader_list)
-                    delay(120)
+                    for akun in range(len(reader_list)):
+                        if username == reader_list[akun][0]:
+                            accountIndex += akun
+                            if password == reader_list[accountIndex][1]:
+                                if reader_list[accountIndex][2] == "admin":
+                                    while True:
+                                        clear()
+                                        adminTable = PrettyTable(["Welcome to WAGE Admin Menu"])
+                                        adminTable.add_row(["[1] Add new stock"])
+                                        adminTable.add_row(["[2] View stock"])
+                                        adminTable.add_row(["[3] Change stock"])
+                                        adminTable.add_row(["[4] Delete stock"])
+                                        adminTable.add_row(["[5] Logout"])
+                                        adminTable.align["Welcome to WAGE Admin Menu"] = "l"
+                                        print(adminTable)
+
+                                        pilihan = int(input("Masukkan pilihan anda: "))
+                                        match pilihan:
+                                            case 1:
+                                                clear()
+                                            case 2:
+                                                clear()
+                                            case 3:
+                                                clear()
+                                            case 4:
+                                                clear()
+                                            case 5:
+                                                clear()
+                                                accountIndex = 0
+                                                break
+    
+                                elif reader_list[accountIndex][2] == "user":
+                                    while True:
+                                        clear()
+                                        userTable = PrettyTable(["Welcome to WAGE User Menu"])
+                                        userTable.add_row(["[1] View available stock"])
+                                        userTable.add_row(["[2] Search for stock"])
+                                        userTable.add_row(["[3] Logout"])
+                                        userTable.align["Welcome to WAGE User Menu"] = "l"
+                                        print(userTable)
+
+                                        pilihan = int(input("Masukkan pilihan anda: "))
+                                        match pilihan:
+                                            case 1:
+                                                clear()
+                                            case 2:
+                                                clear()
+                                            case 3:
+                                                clear()
+                                                accountIndex = 0
+                                                break
+                            else:
+                                print("Password anda salah!")
                     # End here
 
             case 2:
                 clear()
                 userReg = input("Masukkan username... ")
                 passReg = input("Masukkan password... ")
-                uniqueReg = ''.join(random.choice(string.ascii_letters + string.digits) for i in range(16))
+                userLevel = input("Register sebagai? [Admin/User] ")
 
                 with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
                     dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-                    dictObject.writerow({'username': userReg, 'password': passReg, 'unique_id': uniqueReg})
+                    dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
                     csvfile.close()
 
             case 3:
