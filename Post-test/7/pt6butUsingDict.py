@@ -1,21 +1,21 @@
 # Import library
 import os, time, pwinput
+from prettytable import PrettyTable
 
 # Membuat fungsi yang akan digunakan nanti
 def clear():
-    os.system("cls") if os.name == "nt" else os.system("clear")
+    os.system("cls" if os.name == "nt" else os.system("clear"))
 
 def delay(seconds):
     time.sleep(seconds)
 
 # Setup tempat menyimpan data
-listAkun = [[], [], []]
-indexAkun = 0
-listFilm = []
-indexFilm = 0
+dictAkun = {}
+listAkun = []
+akun = ""
+dictFilm = {}
 pilihan1 = tuple(i for i in range(1, 4))
 pilihan2 = tuple(i for i in range(1, 6))
-pilihan3 = tuple(i for i in range(1, 4))
 
 while True:
     clear()
@@ -38,34 +38,33 @@ while True:
         continue
 
     if pilihan == 1:
-        if len(listAkun[0]) == 0:
+        if len(dictAkun) == 0:
             clear()
             print("Tidak ada akun. Anda harus membuat akun terlebih dahulu")
             userReg = input("Masukkan username yang anda inginkan... ")
             passReg = input("Masukkan password yang anda inginkan... ")
             accLevel = input("Register sebagai? [Admin/User]... ")
-
-            listAkun[0].append(userReg)
-            listAkun[1].append(passReg)
-            listAkun[2].append(accLevel)
-
+            dictAkun[userReg] = dict(password=passReg, accountLevel=accLevel.title())
         else:
             delay(1)
             clear()
             username = input("Masukkan username anda: ")
             password = pwinput.pwinput(prompt="Masukkan password anda: ")
 
-            for user in range(len(listAkun[0])):
-                if listAkun[0][user] == username:
-                    indexAkun += user
+            for i in dictAkun:
+                listAkun.append(i)
 
-            if listAkun[1][indexAkun] == password:
-                delay(1)
+            for i in listAkun:
+                if i == username:
+                    akun = i
+
+            accNow = dictAkun.get(akun)
+            if accNow.get("password") == password:
                 print("Login successful")
+                delay(1)
                 while True:
-                    delay(1)
-                    clear()
-                    if listAkun[2][indexAkun] == "Admin" or listAkun[2][indexAkun] == "admin":
+                    if accNow.get("accountLevel") == "Admin":
+                        clear()
                         print("-" * 26)
                         print("|", "CRUD21 Admin Menu".center(22), "|")
                         print("-" * 26)
@@ -93,47 +92,47 @@ while True:
                                 tahunFilm = input("Masukkan tahun rilis film: ")
                                 genreFilm = input("Masukkan genre film: ")
                                 durasiFilm = input("Masukkan durasi film: ")
-                                listFilm.append(dict(Judul=judulFilm, TahunRilis=tahunFilm, Genre=genreFilm, Durasi=durasiFilm))
-
+                                dictFilm[judulFilm] = dict(TahunRilis=tahunFilm, Genre=genreFilm, Durasi=durasiFilm)
                             case 2:
                                 clear()
-                                if len(listFilm) == 0:
+                                if len(dictFilm) == 0:
                                     print("Film kosong, silakan input data film terlebih dahulu.")
                                 else:
-                                    for i in range(1, len(listFilm) + 1):
-                                        print(f"{i}. Judul: {listFilm[indexFilm]['Judul']}\n   Tahun Rilis: {listFilm[indexFilm]['TahunRilis']}\n   Genre: {listFilm[indexFilm]['Genre']}\n   Durasi: {listFilm[indexFilm]['Durasi']}\n")
-                                        indexFilm += 1
-                                    indexFilm = 0
+                                    table = PrettyTable(["Judul Film", "Tahun Rilis", "Genre Film", "Durasi Film"])
+                                    for key, value in dictFilm.items():
+                                        table.add_row([key, value.get("TahunRilis"), value.get("Genre"), value.get("Durasi")])
+                                    table.align = "l"
+                                    print(table)
 
                                 lanjut = input("Lanjut? [Y/N]... ")
                                 if lanjut == "N" or lanjut == "n":
                                     break
-
                             case 3:
                                 clear()
                                 judulFilmUbah = input("Masukkan judul film yang ingin diubah: ")
-                                for film in listFilm:
-                                    if film["Judul"] == judulFilmUbah:
-                                        print(film)
-                                        key = input("Masukkan key dari film yang ingin diubah: ")
-                                        value = input("Ubah menjadi: ")
-                                        film[key] = value
-
+                                for film in dictFilm:
+                                    if film == judulFilmUbah:
+                                        print("Judul:", film, ":", dictFilm.get(film))
+                                        ubah = input("Masukkan key dari value yang ingin diubah: ")
+                                        jadi = input("Ubah menjadi: ")
+                                        if ubah == "Judul" or ubah == "judul":
+                                            dictFilm[str(jadi)] = dictFilm[str(film)]
+                                            del dictFilm[str(film)]
+                                            print("Film berhasil diubah")
+                                        else:
+                                            dictFilm[film][ubah] = jadi
                             case 4:
                                 clear()
                                 judulFilmHapus = input("Masukkan judul film yang ingin dihapus: ")
-                                for film in range(len(listFilm)):
-                                    if listFilm[film]["Judul"] == judulFilmHapus:
-                                        indexFilm += film
-                                del listFilm[indexFilm]
-                                indexFilm = 0
-
+                                if judulFilmHapus in dictFilm:
+                                    dictFilm.pop(judulFilmHapus)
                             case 5:
                                 clear()
-                                indexAkun = 0
+                                akun = ""
                                 break
 
-                    elif listAkun[2][indexAkun] == "User" or listAkun[2][indexAkun] == "user":
+                    elif accNow.get("accountLevel") == "User":
+                        clear()
                         print("-" * 26)
                         print("|", "CRUD21 User Menu".center(22), "|")
                         print("-" * 26)
@@ -147,7 +146,7 @@ while True:
                         except ValueError:
                             print("Nilai yang anda masukkan haruslah angka.")
 
-                        if pilihan not in pilihan3:
+                        if pilihan not in pilihan1:
                             print("Pilihan anda tidak ada di menu.")
                             delay(1)
                             continue
@@ -155,46 +154,44 @@ while True:
                         match pilihan:
                             case 1:
                                 clear()
-                                for i in range(1, len(listFilm) + 1):
-                                    print(f"{i}. Judul: {listFilm[indexFilm]['Judul']}\n   Tahun Rilis: {listFilm[indexFilm]['TahunRilis']}\n   Genre: {listFilm[indexFilm]['Genre']}\n   Durasi: {listFilm[indexFilm]['Durasi']}\n")
-                                    indexFilm += 1
-                                indexFilm = 0
-
+                                table = PrettyTable(["Judul Film", "Tahun Rilis", "Genre Film", "Durasi Film"])
+                                for key, value in dictFilm.items():
+                                    table.add_row([key, value.get("TahunRilis"), value.get("Genre"), value.get("Durasi")])
+                                table.align = "l"
+                                print(table)
                             case 2:
                                 clear()
                                 filmTitle = input("Masukkan judul film yang ingin anda cari: ")
-                                if len(listFilm) == 0:
+                                if len(dictFilm) == 0:
                                     print("Data film masih kosong, tunggu admin mengisi data.")
                                 else:
-                                    for film in listFilm:
-                                        if film["Judul"] == filmTitle:
+                                    for film in dictFilm:
+                                        if film == filmTitle:
                                             print("Judul yang anda cari ditemukan.\n")
-                                            print(f"Judul Film: {film['Judul']}")
-                                            print(f"Tahun Rilis: {film['TahunRilis']}")
-                                            print(f"Genre Film: {film['Genre']}")
-                                            print(f"Durasi Film: {film['Durasi']}\n")
+                                            searchTable = PrettyTable(["Judul Film", "Tahun Rilis", "Genre Film", "Durasi Film"])
+                                            searchTable.add_row([film, dictFilm[film].get("TahunRilis"), dictFilm[film].get("Genre"), dictFilm[film].get("Durasi")])
+                                            searchTable.align = "l"
+                                            print(searchTable)
                                         else:
                                             print("Film yang anda cari tidak ditemukan")
-
-                                lanjut = input("Lanjut? [Y/N]... ")
-                                if lanjut == "N" or lanjut == "n":
-                                    break
-
                             case 3:
+                                clear()
+                                akun = ""
                                 break
 
+                        lanjut = input("Lanjut? [Y/N]... ")
+                        if lanjut == "N" or lanjut == "n":
+                            break
             else:
                 print("Wrong password")
-                indexAkun = 0
+                delay(10)
 
     elif pilihan == 2:
+        clear()
         userReg = input("Masukkan username yang anda inginkan... ")
         passReg = input("Masukkan password yang anda inginkan... ")
         accLevel = input("Register sebagai? [Admin/User]... ")
-
-        listAkun[0].append(userReg)
-        listAkun[1].append(passReg)
-        listAkun[2].append(accLevel)
+        dictAkun[userReg] = dict(password=passReg, accountLevel=accLevel.title())
 
     elif pilihan == 3:
         clear()
