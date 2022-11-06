@@ -80,6 +80,15 @@ Poin + dengan syarat:
 - Dapat melakukan register.
 - Menggunakan nested list.
 
+## Post-test 7
+Tanggal pelaksanaan post-test #7: 5 November - 9 November 2022. Mengubah program pada [Post-test 6](https://github.com/nabilsaragih/Semester1/tree/main/Post-test/6/crud21.py "Post-test 6") menjadi menggunakan dictionary pada [Post-test 7](https://github.com/nabilsaragih/Semester1/blob/main/Post-test/7/pt6butUsingDict.py "Post-test 7")
+
+Poin (+):
+- Multiuser (admin dan pengguna biasa)
+- Error Handling
+- Dapat Melakukan Register
+- Menggunakan Nested Dictionary
+
 # Proyek Akhir Praktikum Algoritma dan Pemrograman Dasar
 #### Tema:
 - Bebas (Tidak boleh sama, dilis di google spreadsheet).
