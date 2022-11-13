@@ -8,11 +8,31 @@ def clear():
 def delay(seconds):
     time.sleep(seconds)
 
+def logo():
+    print("""
+██╗    ██╗ █████╗  ██████╗ ███████╗
+██║    ██║██╔══██╗██╔════╝ ██╔════╝
+██║ █╗ ██║███████║██║  ███╗█████╗  
+██║███╗██║██╔══██║██║   ██║██╔══╝  
+╚███╔███╔╝██║  ██║╚██████╔╝███████╗
+ ╚══╝╚══╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝                       
+    """)
+
+def about():
+    print("Dibuat oleh".center(40, "-"))
+    print("Muhammad Nabil Saragih (2209106032)".ljust(40, " "))
+    print("Muhammad Arianda Saputra (2209106027)".ljust(40, " "))
+    print("Muhammad Rafi Adithama (2209106041)".ljust(40, " "))
+    print()
+
+def lanjut():
+    lanjut = input("Tekan ENTER untuk lanjut. ")
+
 accountCsvLine = 0
 accountIndex = 0
 indexItem = 0
 stockCsvLine = 0
-lotsChoices = (1, 2, 3)
+lotsChoices = (1, 2, 3, 4)
 listOfStockDict = []
 
 cwd = os.getcwd()
@@ -40,12 +60,18 @@ if stockIsFile == False:
         writer.writeheader()
         stockcsv.close()
 
+logo()
+
 while True:
     clear()
+    delay(1.5)
+    clear()
+
     myTable = PrettyTable(["Welcome to WAGE"])
     myTable.add_row(["[1] Login"])
     myTable.add_row(["[2] Register"])
-    myTable.add_row(["[3] Exit"])
+    myTable.add_row(["[3] About"])
+    myTable.add_row(["[4] Exit"])
     myTable.align["Welcome to WAGE"] = "l"
     print(myTable)
 
@@ -129,7 +155,7 @@ while True:
                                                     showData.align["Tanggal Input"] = "c"
                                                     print(showData)
 
-                                                lanjut = input("Tekan ENTER untuk lanjut. ")
+                                                lanjut()
                                             case 3:
                                                 clear()
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
@@ -157,7 +183,8 @@ while True:
                                                 
                                                 indexItem = 0
                                                 listOfStockDict = []
-                                                lanjut = input("Barang berhasil diubah. Tekan ENTER untuk lanjut. ")
+                                                print("Barang berhasil diubah.")
+                                                lanjut()
                                             case 4:
                                                 clear()
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
@@ -213,9 +240,33 @@ while True:
                                         pilihan = int(input("Masukkan pilihan anda: "))
                                         match pilihan:
                                             case 1:
-                                                clear()
+                                                with open('.\Database\\stock.csv') as stockdata:
+                                                    dataLength = len(stockdata)
+                                                    if dataLength == 1:
+                                                        print("Stock barang belum tersedia. Mohon tunggu admin untuk menginput data.")
+                                                    else:
+                                                        clear()
+                                                        showData = from_csv(stockdata)
+                                                        showData.align["Nama Barang"] = "l"
+                                                        showData.align["Jumlah Barang"] = "r"
+                                                        showData.align["Harga Barang"] = "r"
+                                                        print(showData)
+
+                                                lanjut()
                                             case 2:
                                                 clear()
+                                                cariBarang = input("Masukkan nama barang: ")
+                                                with open('.\Database\\stock.csv') as stockdata:
+                                                    searchData = csv.DictReader(stockdata)
+                                                    for nama in searchData:
+                                                        namaBarang = nama.get("Nama Barang")
+                                                        if namaBarang == cariBarang.title():
+                                                            print("Barang ditemukan.\n")
+                                                            print(f"Nama Barang: {nama['Nama Barang']}\nJumlah Barang: {nama['Jumlah Barang']}\nHarga Barang: {nama['Harga Barang']}\n")
+                                                            lanjut()
+                                                        else:
+                                                            print("Barang tidak ditemukan.")
+                                                            delay(1)
                                             case 3:
                                                 clear()
                                                 accountIndex = 0
@@ -236,6 +287,11 @@ while True:
                     csvfile.close()
 
             case 3:
+                clear()
+                about()
+                lanjut()
+
+            case 4:
                 clear()
                 break
     else:
