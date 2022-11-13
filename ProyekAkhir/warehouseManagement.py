@@ -28,6 +28,17 @@ def about():
 def lanjut():
     lanjut = input("Tekan ENTER untuk lanjut. ")
 
+def register():
+    userReg = input("Masukkan username... ")
+    passReg = input("Masukkan password... ")
+    userLevel = input("Register sebagai? [Admin/User] ")
+
+    with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
+        fieldnames = ['username', 'password', 'account_level']
+        dictObject = DictWriter(csvfile, fieldnames=fieldnames)
+        dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
+        csvfile.close()
+
 accountCsvLine = 0
 accountIndex = 0
 indexItem = 0
@@ -35,6 +46,7 @@ stockCsvLine = 0
 lotsChoices = (1, 2, 3, 4)
 listOfStockDict = []
 
+# Mencari folder yang dibutuhkan dan membuat folder serta file jika belum ada
 cwd = os.getcwd()
 DBPath = cwd + "\\database"
 accountDBPath = DBPath + "\\account.csv"
@@ -65,7 +77,6 @@ logo()
 while True:
     clear()
     delay(1.5)
-    clear()
 
     myTable = PrettyTable(["Welcome to WAGE"])
     myTable.add_row(["[1] Login"])
@@ -86,7 +97,7 @@ while True:
         match choices:
             case 1:
                 clear()
-
+                # Melihat isi file account.csv, akan login jika akun sudah ada dan akan register jika akun belum ada
                 data = open(".\database\\account.csv", "r")
                 reader_file = csv.reader(data)
                 reader_list = list(reader_file)
@@ -97,15 +108,7 @@ while True:
                 if accountCsvLine == 1:
                     print("Anda harus register terlebih dahulu.")
                     delay(1)
-                    userReg = input("Masukkan username... ")
-                    passReg = input("Masukkan password... ")
-                    userLevel = input("Register sebagai? [Admin/User] ")
-
-                    with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
-                        fieldnames = ['username', 'password', 'account_level']
-                        dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-                        dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
-                        csvfile.close()
+                    register()
 
                 else:
                     print("Login to WAGE")
@@ -137,6 +140,7 @@ while True:
                                                 harga_barang = float(input("Masukkan harga barang: "))
                                                 tanggal_input = datetime.datetime.now()
 
+                                                # Membuka file dan mengappend nilai input ke dalam file
                                                 with open('.\Database\\stock.csv', 'a', newline='\n') as stockinput:
                                                     list_header = ['Nama Barang', 'Jumlah Barang', 'Harga Barang', 'Tanggal Input']
                                                     dictObject = DictWriter(stockinput, fieldnames=list_header)
@@ -147,6 +151,7 @@ while True:
                                                 delay(1)
                                             case 2:
                                                 clear()
+                                                # Mencetak isi file
                                                 with open('.\Database\\stock.csv') as stockdata:
                                                     showData = from_csv(stockdata)
                                                     showData.align["Nama Barang"] = "l"
@@ -158,6 +163,7 @@ while True:
                                                 lanjut()
                                             case 3:
                                                 clear()
+                                                # Mengubah isi file
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
                                                 stock_name = input("Masukkan nama barang yang ingin diubah: ")
 
@@ -175,6 +181,7 @@ while True:
 
                                                 keys = listOfStockDict[0].keys()
 
+                                                # Replace file awal menjadi file yang sudah diubah
                                                 with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
                                                     dict_writer = csv.DictWriter(replace_csv, keys)
                                                     dict_writer.writeheader()
@@ -187,6 +194,7 @@ while True:
                                                 lanjut()
                                             case 4:
                                                 clear()
+                                                # Menghapus stock
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
                                                 hapus = input("Masukkan nama barang yang ingin dihapus: ")
 
@@ -200,6 +208,7 @@ while True:
                                                 for row in open(".\database\\stock.csv"):
                                                     stockCsvLine += 1
 
+                                                # Jika file stock hanya terdiri dari 2 baris
                                                 if stockCsvLine == 2:
                                                     with open('.\Database\\stock.csv', 'r+') as deleteStock:
                                                         lines = deleteStock.readlines()
@@ -208,11 +217,13 @@ while True:
                                                         deleteStock.writelines(lines[:-1])
                                                         deleteStock.close()
                                                 else:
+                                                    # Jika file stock lebih dari 2 baris
                                                     del listOfStockDict[indexItem]
                                                     print("Barang berhasil dihapus.")
 
                                                     keys = listOfStockDict[0].keys()
 
+                                                    # Mereplace file yang sudah ada menjadi file yang sudah diubah
                                                     with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
                                                         dict_writer = csv.DictWriter(replace_csv, keys)
                                                         dict_writer.writeheader()
@@ -276,15 +287,7 @@ while True:
 
             case 2:
                 clear()
-                userReg = input("Masukkan username... ")
-                passReg = input("Masukkan password... ")
-                userLevel = input("Register sebagai? [Admin/User] ")
-
-                with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
-                    fieldnames = ['username', 'password', 'account_level']
-                    dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-                    dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
-                    csvfile.close()
+                register()
 
             case 3:
                 clear()
