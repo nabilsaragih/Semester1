@@ -73,10 +73,10 @@ if stockIsFile == False:
         stockcsv.close()
 
 logo()
+delay(1.5)
 
 while True:
     clear()
-    delay(1.5)
 
     myTable = PrettyTable(["Welcome to WAGE"])
     myTable.add_row(["[1] Login"])
@@ -284,6 +284,9 @@ while True:
                                                 break
                             else:
                                 print("Password anda salah!")
+
+                        else:
+                            print("Akun tidak ditemukan.")
 
             case 2:
                 clear()
