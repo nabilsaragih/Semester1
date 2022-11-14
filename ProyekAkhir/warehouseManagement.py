@@ -83,7 +83,6 @@ delay(1.5)
 
 while True:
     clear()
-
     myTable = PrettyTable(["Welcome to WAGE"])
     myTable.add_row(["[1] Login"])
     myTable.add_row(["[2] Register"])
@@ -257,12 +256,13 @@ while True:
                                         pilihan = int(input("Masukkan pilihan anda: "))
                                         match pilihan:
                                             case 1:
-                                                with open('.\Database\\stock.csv') as stockdata:
-                                                    dataLength = len(stockdata)
-                                                    if dataLength == 1:
+                                                clear()
+                                                with open('.\Database\\stock.csv', 'r') as stockdata:
+                                                    csvFile = csv.reader(stockdata)
+                                                    dataLength = list(csvFile)
+                                                    if len(dataLength) == 1:
                                                         print("Stock barang belum tersedia. Mohon tunggu admin untuk menginput data.")
                                                     else:
-                                                        clear()
                                                         showData = from_csv(stockdata)
                                                         showData.align["Nama Barang"] = "l"
                                                         showData.align["Jumlah Barang"] = "r"
