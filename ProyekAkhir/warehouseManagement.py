@@ -1,3 +1,9 @@
+"""
+DISCLAIMER
+Sebelum menjalankan program diharapkan tidak ada file bernama 
+Database agar tidak tertimpa ketika menjalankan program
+"""
+
 import csv, os, time, pwinput, datetime
 from csv import DictWriter
 from prettytable import PrettyTable, from_csv
