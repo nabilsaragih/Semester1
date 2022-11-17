@@ -2,7 +2,7 @@
 - Mata Kuliah: Algoritma dan Pemrograman Dasar
 - Kelas: Informatika A2 2022
 - Dosen Pembimbing: Muhammad Bambang Firdaus, S.Kom., M.Kom. / Awang Harsa Kridalaksana, S.Kom., M.Kom.
-- Asisten Laboratorium: Muhammad Hadiseptian Nursukamto | Ahmad Dhiya Ulhaqi
+- Asisten Laboratorium: Muhammad Hadiseptian Nursukamto | Ahmad Dhiya Ulhaqi | Yanuar Gideon Simalango
 - Bahasa Pemrograman: Python
 
 # Studi Kasus Modul Praktikum
