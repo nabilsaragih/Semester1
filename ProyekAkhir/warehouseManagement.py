@@ -201,7 +201,7 @@ while True:
                                                         print(f"Key: Value\nNama Barang: {listOfStockDict[indexItem]['Nama Barang']}\nJumlah Barang: {listOfStockDict[indexItem]['Jumlah Barang']}\nHarga Barang: {listOfStockDict[indexItem]['Harga Barang']}")
                                                         pilih = input("Masukkan key dari item yang ingin diubah: ")
                                                         ubah = input("Ubah menjadi: ")
-                                                        listOfStockDict[indexItem][pilih.title()] = ubah
+                                                        listOfStockDict[indexItem][pilih.title()] = ubah.title()
 
                                                         keys = listOfStockDict[0].keys()
 
@@ -219,6 +219,7 @@ while True:
                                                 
                                                 indexItem = 0
                                                 listOfStockDict = []
+                                                listOfStockName = []
                                                 lanjut()
                                             case 4:
                                                 clear()
@@ -304,14 +305,20 @@ while True:
                                                 with open('.\Database\\stock.csv') as stockdata:
                                                     searchData = csv.DictReader(stockdata)
                                                     for nama in searchData:
-                                                        namaBarang = list(nama.get("Nama Barang"))
-                                                    if cariBarang.title() in namaBarang:
+                                                        listOfStockName.append(nama.get("Nama Barang"))
+                                                        listOfStockDict.append(nama)
+                                                    for index in range(len(listOfStockName)):
+                                                        if cariBarang.title() == listOfStockName[index]:
+                                                            indexItem += index
+                                                    if cariBarang.title() in listOfStockName:
                                                         print("Barang ditemukan.\n")
-                                                        print(f"Nama Barang: {nama['Nama Barang']}\nJumlah Barang: {nama['Jumlah Barang']}\nHarga Barang: {nama['Harga Barang']}\n")
+                                                        print(f"Nama Barang: {listOfStockDict[indexItem].get('Nama Barang')}\nJumlah Barang: {listOfStockDict[indexItem].get('Jumlah Barang')}\nHarga Barang: {listOfStockDict[indexItem].get('Harga Barang')}\n")
                                                         lanjut()
                                                     else:
                                                         print("Barang tidak ditemukan.")
                                                         delay(1)
+                                                    
+                                                    indexItem = 0
                                             case 3:
                                                 clear()
                                                 accountIndex = 0
