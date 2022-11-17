@@ -187,18 +187,15 @@ while True:
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
                                                 for row in stock_dict:
                                                     listOfStockDict.append(row)
-
-                                                for stockname in stock_dict:
-                                                    listOfStockName.append(stock.get("Nama Barang"))
-
-                                                for stock in range(len(listOfStockDict)):
-                                                    if stock_name.title() == listOfStockDict[stock]["Nama Barang"]:
-                                                        indexItem += stock
-                                                    else: continue
+                                                    listOfStockName.append(row.get("Nama Barang"))
                                                     
-                                                if len(listOfStockName) != 0:
+                                                if len(listOfStockDict) >= 1:
                                                     print(f"Barang yang tersedia: {', '.join(listOfStockName)}")
                                                     stock_name = input("Masukkan nama barang yang ingin diubah: ")
+                                                    for stock in range(len(listOfStockDict)):
+                                                        if stock_name.title() == listOfStockDict[stock]["Nama Barang"]:
+                                                            indexItem += stock
+                                                        else: continue
                                                     if stock_name.title() in listOfStockName:
                                                         print("Barang ditemukan.")
                                                         print(f"Key: Value\nNama Barang: {listOfStockDict[indexItem]['Nama Barang']}\nJumlah Barang: {listOfStockDict[indexItem]['Jumlah Barang']}\nHarga Barang: {listOfStockDict[indexItem]['Harga Barang']}")
@@ -262,6 +259,7 @@ while True:
                                                         replace_csv.close()
 
                                                     indexItem = 0
+                                                    stockCsvLine = 0
                                                     listOfStockDict = []
                                                     delay(1)
                                             case 5:
@@ -284,16 +282,19 @@ while True:
                                         match pilihan:
                                             case 1:
                                                 clear()
-                                                with open('.\Database\\stock.csv', 'r') as stockdata:
-                                                    csvFile = csv.reader(stockdata)
-                                                    dataLength = list(csvFile)
-                                                    if len(dataLength) == 1:
-                                                        print("Stock barang belum tersedia. Mohon tunggu admin untuk menginput data.")
-                                                    else:
+                                                stockdata = open('.\Database\\stock.csv', 'r')
+                                                for row in stockdata:
+                                                    stockCsvLine += 1
+
+                                                if stockCsvLine == 1:
+                                                    print("Barang masih kosong tunggu admin menambahkan barang.")
+                                                else:
+                                                    with open('.\Database\\stock.csv', 'r') as stockdata:
                                                         showData = from_csv(stockdata)
                                                         showData.align["Nama Barang"] = "l"
                                                         showData.align["Jumlah Barang"] = "r"
                                                         showData.align["Harga Barang"] = "r"
+                                                        showData.align["Tanggal Input"] = "c"
                                                         print(showData)
 
                                                 lanjut()
@@ -303,8 +304,8 @@ while True:
                                                 with open('.\Database\\stock.csv') as stockdata:
                                                     searchData = csv.DictReader(stockdata)
                                                     for nama in searchData:
-                                                        namaBarang = nama.get("Nama Barang")
-                                                    if namaBarang == cariBarang.title():
+                                                        namaBarang = list(nama.get("Nama Barang"))
+                                                    if cariBarang.title() in namaBarang:
                                                         print("Barang ditemukan.\n")
                                                         print(f"Nama Barang: {nama['Nama Barang']}\nJumlah Barang: {nama['Jumlah Barang']}\nHarga Barang: {nama['Harga Barang']}\n")
                                                         lanjut()
