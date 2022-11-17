@@ -1,7 +1,8 @@
 """
 DISCLAIMER
 Sebelum menjalankan program diharapkan tidak ada file bernama 
-Database agar tidak tertimpa ketika menjalankan program
+Database di directory tempat menjalankan prgoram agar tidak 
+tertimpa ketika program berjalan
 """
 
 import csv, os, time, pwinput, datetime
@@ -35,22 +36,36 @@ def lanjut():
     lanjut = input("Tekan ENTER untuk lanjut. ")
 
 def register():
+    with open('.\Database\\account.csv', 'r') as account:
+        readacc = csv.DictReader(account) 
+        for i in readacc:
+            listOfAccDict.append(i.get('username'))
+        account.close()
+
     userReg = input("Masukkan username... ")
     passReg = input("Masukkan password... ")
     userLevel = input("Register sebagai? [Admin/User] ")
 
-    with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
-        fieldnames = ['username', 'password', 'account_level']
-        dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-        dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
-        csvfile.close()
+    if userReg in listOfAccDict:
+        print("Akun sudah terdaftar.")
+        delay(1)
+    else:
+        with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
+            fieldnames = ['username', 'password', 'account_level']
+            dictObject = DictWriter(csvfile, fieldnames=fieldnames)
+            dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
+            csvfile.close()
+        print("Akun berhasil ditambahkan")
+        delay(1)
 
 accountCsvLine = 0
 accountIndex = 0
 indexItem = 0
 stockCsvLine = 0
 lotsChoices = (1, 2, 3, 4)
+listOfStockName = []
 listOfStockDict = []
+listOfAccDict = []
 
 # Mencari folder yang dibutuhkan dan membuat folder serta file jika belum ada
 cwd = os.getcwd()
@@ -170,32 +185,43 @@ while True:
                                                 clear()
                                                 # Mengubah isi file
                                                 stock_dict = csv.DictReader(open('.\Database\\stock.csv'))
-                                                stock_name = input("Masukkan nama barang yang ingin diubah: ")
-
                                                 for row in stock_dict:
                                                     listOfStockDict.append(row)
+
+                                                for stockname in stock_dict:
+                                                    listOfStockName.append(stock.get("Nama Barang"))
 
                                                 for stock in range(len(listOfStockDict)):
                                                     if stock_name.title() == listOfStockDict[stock]["Nama Barang"]:
                                                         indexItem += stock
-                                                        print("Barang ditemukan!")
-                                                
-                                                pilih = input("Masukkan key dari item yang ingin diubah: ")
-                                                ubah = input("Ubah menjadi: ")
-                                                listOfStockDict[indexItem][pilih.title()] = ubah
+                                                    else: continue
+                                                    
+                                                if len(listOfStockName) != 0:
+                                                    print(f"Barang yang tersedia: {', '.join(listOfStockName)}")
+                                                    stock_name = input("Masukkan nama barang yang ingin diubah: ")
+                                                    if stock_name.title() in listOfStockName:
+                                                        print("Barang ditemukan.")
+                                                        print(f"Key: Value\nNama Barang: {listOfStockDict[indexItem]['Nama Barang']}\nJumlah Barang: {listOfStockDict[indexItem]['Jumlah Barang']}\nHarga Barang: {listOfStockDict[indexItem]['Harga Barang']}")
+                                                        pilih = input("Masukkan key dari item yang ingin diubah: ")
+                                                        ubah = input("Ubah menjadi: ")
+                                                        listOfStockDict[indexItem][pilih.title()] = ubah
 
-                                                keys = listOfStockDict[0].keys()
+                                                        keys = listOfStockDict[0].keys()
 
-                                                # Replace file awal menjadi file yang sudah diubah
-                                                with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
-                                                    dict_writer = csv.DictWriter(replace_csv, keys)
-                                                    dict_writer.writeheader()
-                                                    dict_writer.writerows(listOfStockDict)
-                                                    replace_csv.close()
+                                                        # Replace file awal menjadi file yang sudah diubah
+                                                        with open('.\Database\\stock.csv', 'w', newline='\n') as replace_csv:
+                                                            dict_writer = csv.DictWriter(replace_csv, keys)
+                                                            dict_writer.writeheader()
+                                                            dict_writer.writerows(listOfStockDict)
+                                                            replace_csv.close()
+                                                        print("Barang berhasil diubah.")
+                                                    else:
+                                                        print("Barang tidak ditemukan.")
+                                                else:
+                                                    print("Barang tidak tersedia, input barang terlebih dahulu.")
                                                 
                                                 indexItem = 0
                                                 listOfStockDict = []
-                                                print("Barang berhasil diubah.")
                                                 lanjut()
                                             case 4:
                                                 clear()
@@ -241,6 +267,7 @@ while True:
                                             case 5:
                                                 clear()
                                                 accountIndex = 0
+                                                listOfAccDict = []
                                                 break
 
                                 elif reader_list[accountIndex][2] == "user":
@@ -277,16 +304,17 @@ while True:
                                                     searchData = csv.DictReader(stockdata)
                                                     for nama in searchData:
                                                         namaBarang = nama.get("Nama Barang")
-                                                        if namaBarang == cariBarang.title():
-                                                            print("Barang ditemukan.\n")
-                                                            print(f"Nama Barang: {nama['Nama Barang']}\nJumlah Barang: {nama['Jumlah Barang']}\nHarga Barang: {nama['Harga Barang']}\n")
-                                                            lanjut()
-                                                        else:
-                                                            print("Barang tidak ditemukan.")
-                                                            delay(1)
+                                                    if namaBarang == cariBarang.title():
+                                                        print("Barang ditemukan.\n")
+                                                        print(f"Nama Barang: {nama['Nama Barang']}\nJumlah Barang: {nama['Jumlah Barang']}\nHarga Barang: {nama['Harga Barang']}\n")
+                                                        lanjut()
+                                                    else:
+                                                        print("Barang tidak ditemukan.")
+                                                        delay(1)
                                             case 3:
                                                 clear()
                                                 accountIndex = 0
+                                                listOfStockDict = []
                                                 break
                             else:
                                 print("Password anda salah!")
