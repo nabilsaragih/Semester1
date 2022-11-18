@@ -46,17 +46,21 @@ def register():
     passReg = input("Masukkan password... ")
     userLevel = input("Register sebagai? [Admin/User] ")
 
-    if userReg in listOfAccDict:
-        print("Akun sudah terdaftar.")
+    if userReg or passReg or userLevel == "":
+        print("Username, password, dan level akun harus memiliki isi")
         delay(1)
     else:
-        with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
-            fieldnames = ['username', 'password', 'account_level']
-            dictObject = DictWriter(csvfile, fieldnames=fieldnames)
-            dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
-            csvfile.close()
-        print("Akun berhasil ditambahkan")
-        delay(1)
+        if userReg in listOfAccDict:
+            print("Akun sudah terdaftar.")
+            delay(1)
+        else:
+            with open('.\Database\\account.csv', 'a', newline='\n') as csvfile:
+                fieldnames = ['username', 'password', 'account_level']
+                dictObject = DictWriter(csvfile, fieldnames=fieldnames)
+                dictObject.writerow({'username': userReg, 'password': passReg, 'account_level': userLevel.lower()})
+                csvfile.close()
+            print("Akun berhasil ditambahkan")
+            delay(1)
 
 accountCsvLine = 0
 accountIndex = 0
