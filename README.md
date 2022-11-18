@@ -107,8 +107,9 @@ Poin (+):
 
 ## Deskripsi Proyek Akhir
 1. Judul Proyek Akhir: [Sistem Manajemen Gudang](https://github.com/nabilsaragih/Semester1/tree/main/ProyekAkhir/warehouseManagement.py "Sistem Manajemen Gudang")
-2. Aslab Pembimbing: Ahmad Dhiya Ulhaqi
-3. Pengembang:
+2. Flowchart: https://imgbox.com/EZwtrVwf
+3. Aslab Pembimbing: Ahmad Dhiya Ulhaqi
+4. Pengembang:
     - Muhammad Nabil Saragih
     - Muhammad Arianda Saputra
     - Muhammad Rafi Adithama
