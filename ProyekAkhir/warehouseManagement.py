@@ -46,10 +46,7 @@ def register():
     passReg = input("Masukkan password... ")
     userLevel = input("Register sebagai? [Admin/User] ")
 
-    if userReg or passReg or userLevel == "":
-        print("Username, password, dan level akun harus memiliki isi")
-        delay(1)
-    else:
+    if userReg or passReg or userLevel != "":
         if userReg in listOfAccDict:
             print("Akun sudah terdaftar.")
             delay(1)
@@ -61,6 +58,9 @@ def register():
                 csvfile.close()
             print("Akun berhasil ditambahkan")
             delay(1)
+    else:
+        print("Nilai input anda harus sesuai")
+        delay(1)
 
 accountCsvLine = 0
 accountIndex = 0
